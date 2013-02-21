@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = Bing::VERSION
 
   gem.add_runtime_dependency "net-http-persistent"
+  gem.add_runtime_dependency "json"
 end
