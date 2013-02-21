@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "bing"
   gem.require_paths = ["lib"]
   gem.version       = Bing::VERSION
+
+  gem.add_runtime_dependency "net-http-persistent"
 end

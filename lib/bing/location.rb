@@ -30,10 +30,13 @@ class Bing::Location < Bing::RestResource
   attr_reader :city
   attr_reader :confidence
   attr_reader :country
+  attr_reader :county
   attr_reader :entity_type
   attr_reader :full_name
   attr_reader :state
   attr_reader :zip
+  attr_reader :latitude
+  attr_reader :longitude
 
   def initialize resource
     raise Bing::LocationResourceMissing if resource.blank?
@@ -47,7 +50,12 @@ class Bing::Location < Bing::RestResource
       @city    = resource['address']['locality']
       @country = resource['address']['countryRegion']
       @state   = resource['address']['adminDistrict']
+      @county  = resource['address']['adminDistrict2']
       @zip     = resource['address']['postalCode']
+    end
+
+    if resource['point']
+      @latitude, @longitude = resource['point']['coordinates']
     end
 
     if resource['bbox'] then
