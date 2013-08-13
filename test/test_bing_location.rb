@@ -1,4 +1,4 @@
-require 'helper'
+require File.expand_path(File.dirname(__FILE__) + '/helper')
 
 class TestBingLocation < MiniTest::Unit::TestCase
 
@@ -42,6 +42,26 @@ class TestBingLocation < MiniTest::Unit::TestCase
     bl = BL.new resource
 
     assert_equal [123, 456], bl.coordinates
+  end
+
+  def test_initialize_with_calculation_method
+    resource = {
+      'point' => { 'coordinates' => [30,121] },
+      'geocodePoints' => [
+        {
+          'calculationMethod' => 'Rooftop',
+          'coordinates' => [30,121],
+        },
+        {
+          'calculationMethod' => 'Interpolation',
+          'coordinates' => [30,121.123],
+        },
+      ]
+    }
+
+    bl = BL.new resource
+
+    assert_equal 'Rooftop', bl.calculation_method
   end
 
   def test_initialize_with_address

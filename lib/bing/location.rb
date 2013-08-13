@@ -29,6 +29,7 @@ class Bing::Location < Bing::RestResource
   attr_reader :coordinates
   attr_reader :city
   attr_reader :confidence
+  attr_reader :calculation_method
   attr_reader :country
   attr_reader :county
   attr_reader :entity_type
@@ -56,6 +57,13 @@ class Bing::Location < Bing::RestResource
 
     if resource['point']
       @latitude, @longitude = resource['point']['coordinates']
+      if resource['geocodePoints']
+        # use the calculation method of the geocode Point that matches the
+        # coordinates of the point
+        @calculation_method = resource['geocodePoints'].detect { |p|
+          p['coordinates'] == resource['point']['coordinates']
+        }['calculationMethod']
+      end
     end
 
     if resource['bbox'] then
