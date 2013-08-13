@@ -17,4 +17,5 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency "net-http-persistent"
   gem.add_runtime_dependency "json"
+  gem.add_development_dependency "webmock"
 end
