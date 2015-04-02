@@ -8,14 +8,15 @@ class TestBingRoute < MiniTest::Test
     body = {
       'resourceSets' => [
         'resources' => [
-          {'name' => 'full name'}
+          {'travelDistance' => 1234}
         ]
       ]
     }.to_json
 
     mock_map_request 200, BR.path, body
 
-    route = BR.find :waypoints => ['start', 'end']
+    route = BR.find(:waypoints => ['start', 'end']).first
+    assert_equal 1234, route.total_distance
   end
 
   def test_cls_path
