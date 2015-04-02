@@ -51,7 +51,7 @@ class Bing::Route < Bing::RestResource
   attr_reader :total_duration
   attr_reader :type
 
-  def initialize resource
+  def parse_resource(resource)
     raise Bing::RouteResourceMissing if resource.blank?
 
     @distance_unit  = resource['distanceUnit']

@@ -1,17 +1,14 @@
 require_relative 'helper'
 
-class Bing::RestResource
-  class << self
-    public :format_waypoints
-  end
-
-  def initialize *args
+class Bing::TestRestResource < Bing::RestResource
+  def initialize(*args)
+    # does nothing
   end
 end
 
 class TestBingRestResource < MiniTest::Test
 
-  BRR = Bing::RestResource # so cold
+  BRR = Bing::TestRestResource # so cold
 
   def test_base_path
     assert_equal '/REST/v1', BRR::BASE_PATH

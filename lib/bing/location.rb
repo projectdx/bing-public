@@ -39,7 +39,7 @@ class Bing::Location < Bing::RestResource
   attr_reader :latitude
   attr_reader :longitude
 
-  def initialize resource
+  def parse_resource(resource)
     raise Bing::LocationResourceMissing if resource.blank?
 
     @confidence  = resource['confidence']
@@ -74,6 +74,5 @@ class Bing::Location < Bing::RestResource
       @coordinates = resource['point']['coordinates']
     end
   end
-
 end
 

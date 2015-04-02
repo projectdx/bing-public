@@ -7,6 +7,14 @@ class Bing::RestResource
 
   BASE_PATH = "/REST/#{Bing.config[:api_version]}"
 
+  def initialize(resource)
+    parse_resource(resource)
+  end
+
+  def parse_resource(resource)
+    raise "Subclass responsibility"
+  end
+
   def self.map_uri params
     Bing.config[:map_uri].merge(
       "#{path}?key=#{Bing.config[:api_key]}&#{params}"
