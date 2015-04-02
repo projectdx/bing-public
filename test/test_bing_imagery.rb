@@ -2,7 +2,7 @@ require_relative 'helper'
 
 # TODO need to add more tests.
 
-class TestBingImagery < MiniTest::Unit::TestCase
+class TestBingImagery < MiniTest::Test
   BI = Bing::Imagery
 
   def test_cls_path

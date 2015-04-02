@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class TestBingRoute < MiniTest::Unit::TestCase
+class TestBingRoute < MiniTest::Test
 
   BR = Bing::Route
 

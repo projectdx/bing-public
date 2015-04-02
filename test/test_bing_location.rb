@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class TestBingLocation < MiniTest::Unit::TestCase
+class TestBingLocation < MiniTest::Test
 
   BL = Bing::Location
 

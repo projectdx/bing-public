@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class TestCoreExt < MiniTest::Unit::TestCase
+class TestCoreExt < MiniTest::Test
 
   def test_camelize
     assert_equal 'hiMom', 'hi_mom'.camelize(:lower)
