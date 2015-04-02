@@ -1,4 +1,4 @@
-require 'helper'
+require_relative 'helper'
 
 # TODO need to add more tests.
 

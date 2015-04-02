@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/helper')
+require_relative 'helper'
 
 class TestBingLocation < MiniTest::Unit::TestCase
 

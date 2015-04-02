@@ -18,4 +18,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "net-http-persistent"
   gem.add_runtime_dependency "json"
   gem.add_development_dependency "webmock"
+  gem.add_development_dependency "minitest"
+  gem.add_development_dependency "rake"
 end

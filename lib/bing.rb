@@ -4,9 +4,6 @@ require 'uri'
 require 'json'
 
 module Bing
-
-  VERSION = '0.2.0'
-
   DEFAULTS = {
     :api_key     => 'AtsQ7PXwSqL266EUdxMYj3b4-H5A6ubkf8DwH-B4k3rVmmPycUrhmH-lZKHeWXm-',
     :api_uri     => URI.parse('http://api.bing.net'),

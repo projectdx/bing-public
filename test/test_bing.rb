@@ -1,4 +1,4 @@
-require 'helper'
+require_relative 'helper'
 
 class TestBing < MiniTest::Unit::TestCase
 

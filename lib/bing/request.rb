@@ -1,3 +1,4 @@
+require_relative 'version'
 ##
 # Responsible for making requests to Bing. Uses persistent HTTP connections.
 

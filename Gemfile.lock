@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bing (0.0.5)
+    bing (0.2.0)
       json
       net-http-persistent
 
@@ -11,8 +11,10 @@ GEM
     addressable (2.3.3)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
-    json (1.8.0)
+    json (1.8.2)
+    minitest (5.5.1)
     net-http-persistent (2.8)
+    rake (10.4.2)
     safe_yaml (0.9.5)
     webmock (1.13.0)
       addressable (>= 2.2.7)
@@ -23,5 +25,7 @@ PLATFORMS
 
 DEPENDENCIES
   bing!
+  minitest
   net-http-persistent
+  rake
   webmock
