@@ -1,7 +1,6 @@
 require_relative 'helper'
 
 class TestBingRoute < MiniTest::Test
-
   BR = Bing::Route
 
   def test_cls_find

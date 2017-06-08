@@ -7,7 +7,6 @@ class Bing::TestRestResource < Bing::RestResource
 end
 
 class TestBingRestResource < MiniTest::Test
-
   BRR = Bing::TestRestResource # so cold
 
   def test_base_path

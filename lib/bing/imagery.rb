@@ -78,6 +78,4 @@ class Bing::Imagery < Bing::RestResource
     resource = resource ? "/#{URI.escape resource}" : nil
     super "/Imagery/Map/#{imagery_set}#{resource}"
   end
-
 end
-

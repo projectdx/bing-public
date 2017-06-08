@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Bing::VERSION
 
-  gem.add_runtime_dependency "net-http-persistent"
+  gem.add_runtime_dependency "faraday"
   gem.add_runtime_dependency "json"
   gem.add_development_dependency "webmock"
   gem.add_development_dependency "minitest"
