@@ -1,10 +1,8 @@
 require "faraday"
-
 require "bing/version"
 
 ##
-# Responsible for making requests to Bing. Uses persistent HTTP connections.
-
+# Responsible for making requests to Bing REST API.
 class Bing::Request
   USER_AGENT = "Bing Client Version: #{Bing::VERSION}"
 
@@ -16,17 +14,16 @@ class Bing::Request
   ##
   # Perform a get request and ensure that the response.code == 20\d,
   # otherwise raise a BadGateway.
-  def self.get uri
+  def self.get(uri)
     response = HTTP.get(uri)
 
     puts uri if ENV["DEBUG"]
 
-    unless response.status < 400
+    if response.status >= 400
       raise Bing::BadGateway.bad_response(response.status, uri)
     end
 
     response
   end
-
 end
 

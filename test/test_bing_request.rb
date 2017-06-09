@@ -1,7 +1,6 @@
 require_relative 'helper'
 
 class TestRequest < MiniTest::Test
-
   def setup
     @uri = URI.parse 'http://example.com'
   end
@@ -19,8 +18,7 @@ class TestRequest < MiniTest::Test
 
     response = Bing::Request.get @uri
 
-    assert_equal '200', response.code
+    assert_equal 200, response.status
   end
-
 end
 
