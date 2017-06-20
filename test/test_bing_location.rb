@@ -137,7 +137,7 @@ class TestBingLocation < MiniTest::Test
     mock_map_request(200, BL.path, body, { "x-ms-bm-ws-info" => "1" })
 
     assert_raises Bing::RestResource::RateLimitedResponseError do
-      locs = BL.find :query => '123'
+      BL.find :query => '123'
     end
   end
 end

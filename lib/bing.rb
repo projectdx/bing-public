@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'net/http/persistent'
 require 'uri'
 require 'json'
 
