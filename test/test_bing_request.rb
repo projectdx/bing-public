@@ -20,5 +20,12 @@ class TestRequest < MiniTest::Test
 
     assert_equal 200, response.status
   end
-end
 
+  def test_get_client
+    stub_request(:any, "http://example.com").to_return(:status => 200)
+
+    response = Bing::Request.get @uri
+
+    assert_kind_of Faraday::Response, response
+  end
+end
