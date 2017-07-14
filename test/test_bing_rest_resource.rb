@@ -7,7 +7,6 @@ class Bing::TestRestResource < Bing::RestResource
 end
 
 class TestBingRestResource < MiniTest::Test
-
   BRR = Bing::TestRestResource # so cold
 
   def test_base_path
@@ -25,7 +24,7 @@ class TestBingRestResource < MiniTest::Test
     assert_equal 'waypoint.0=4.9%2C+-1.2&waypoint.1=1.2%2C+2.2',
       BRR.format_waypoints(waypoints)
 
-    assert_equal nil, BRR.format_waypoints(nil)
+    assert_nil BRR.format_waypoints(nil)
   end
 
   def test_map_uri

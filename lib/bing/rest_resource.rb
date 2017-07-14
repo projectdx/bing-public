@@ -1,11 +1,10 @@
-require 'bing'
+require "bing"
 
 class Bing::RestResource
   class RateLimitedResponseError < StandardError; end
 
   ##
   # Base Bing Rest route.
-
   BASE_PATH = "/REST/#{Bing.config[:api_version]}"
 
   def initialize(resource)
@@ -23,13 +22,14 @@ class Bing::RestResource
   end
 
   def self.map_find params
-    resp = Bing::Request.get map_uri params
+    resp = Bing::Request.get( map_uri(params) )
     body = JSON.parse resp.body
-    if resp.to_hash["x-ms-bm-ws-info"] == ["1"]
+
+    if resp.headers["x-ms-bm-ws-info"] == "1"
       raise RateLimitedResponseError
     end
 
-    body['resourceSets'].first['resources'].map do |resource|
+    body["resourceSets"].first["resources"].map do |resource|
       new resource
     end.compact
   end
@@ -38,14 +38,10 @@ class Bing::RestResource
     "#{BASE_PATH}#{subclass_path}"
   end
 
-  ##
-  # The map's bounding box.
-
   attr_reader :bounding_box
 
   ##
   # Decipher bounding box from bbox in Bing response.
-
   def bbox box
     south, west, north, east = *box
     {
@@ -66,8 +62,7 @@ class Bing::RestResource
       ways << "waypoint.#{i}=#{CGI.escape way}"
     end
 
-    ways.join '&'
+    ways.join "&"
   end
-
 end
 

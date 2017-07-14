@@ -1,7 +1,7 @@
 require_relative 'helper'
+require "m"
 
 class TestBingLocation < MiniTest::Test
-
   BL = Bing::Location
 
   def test_cls_find_successful
@@ -134,10 +134,10 @@ class TestBingLocation < MiniTest::Test
       ]
     }.to_json
 
-    mock_map_request 200, BL.path, body, { "X-MS-BM-WS-INFO" => "1" }
+    mock_map_request(200, BL.path, body, { "x-ms-bm-ws-info" => "1" })
 
     assert_raises Bing::RestResource::RateLimitedResponseError do
-      locs = BL.find :query => '123'
+      BL.find :query => '123'
     end
   end
 end

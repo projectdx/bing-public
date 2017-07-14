@@ -75,9 +75,7 @@ class Bing::Imagery < Bing::RestResource
 
   def self.path imagery_set = nil, resource = nil
     imagery_set ||= 'Road'
-    resource = resource ? "/#{URI.escape resource}" : nil
+    resource = resource ? "/#{URI.encode(resource)}" : nil
     super "/Imagery/Map/#{imagery_set}#{resource}"
   end
-
 end
-

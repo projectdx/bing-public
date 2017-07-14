@@ -1,26 +1,29 @@
-require_relative 'version'
+require "faraday"
+require "bing/version"
+
 ##
-# Responsible for making requests to Bing. Uses persistent HTTP connections.
-
+# Responsible for making requests to Bing REST API.
 class Bing::Request
-
-  HTTP = Net::HTTP::Persistent.new
   USER_AGENT = "Bing Client Version: #{Bing::VERSION}"
-  HTTP.headers['user-agent'] = USER_AGENT
+
+  HTTP = Faraday.new(headers: { user_agent: USER_AGENT }) do |builder|
+    builder.request :url_encoded
+    builder.adapter Faraday.default_adapter
+  end
 
   ##
   # Perform a get request and ensure that the response.code == 20\d,
   # otherwise raise a BadGateway.
-  def self.get uri
-    response = HTTP.request uri
+  def self.get(uri)
+    response = HTTP.get(uri)
 
-    puts uri if ENV['DEBUG']
+    puts uri if ENV["DEBUG"]
 
-    raise Bing::BadGateway.bad_response(response.code, uri) unless
-      response.code =~ /20\d/
+    if response.status >= 400
+      raise Bing::BadGateway.bad_response(response.status, uri)
+    end
 
     response
   end
-
 end
 
