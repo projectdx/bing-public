@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.1.7
+
+before_install: gem install bundler -v 1.11.2
+
+env:
+  global:
+    # $GEMFURY_API_KEY (itstaff+readwrite@renewfinancial.com)
+    - secure: "wj665m0ZgfRxRrHQHPwMALISpLl5o65B41I0HLRTAj67M2zTjgRqEeNSCvM8lGC9fjveJTZ6HVFfGD3GZZ1GoOp4FzTZDUGdetHMJ6M33BcT7p92OOO6VP6heROM6mpY2qsVRQ2bolF24VUgi//6VUsBN1FWTGsmPTrdKJkwGJI="
+
+after_success:
+  - gem install -q renew_tools --source https://sXqaiTdHem9AuWU4o8oH@gem.fury.io/renewfinancial/
+  - renew gem release
